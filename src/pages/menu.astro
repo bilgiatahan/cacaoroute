@@ -1,0 +1,49 @@
+---
+import Layout from "../layouts/Layout.astro";
+import useMenuByCategory from "../hooks/useMenuByCategory";
+import ChocolateBadges from "../components/ChocolateBadges/index.astro";
+const menus = await useMenuByCategory();
+---
+
+<Layout title="Cacao Route - Chocolatier">
+  <main class="menu-page">
+    <div class="popular-menu">
+      <div class="container">
+        {
+          Object.keys(menus).map((category: string, index: number) => (
+            <details class="category">
+              <summary>
+                {category}
+                <span class="material-icons"> expand_more</span>
+              </summary>
+              <div class="card-container">
+                {menus[category].map((item) => (
+                  <div class="card">
+                    <h3 class="card_title">{item.attributes.Name}</h3>
+                    <p class="card_description">
+                      {item.attributes.Description}
+                    </p>
+                    <div class="card_bagdes">
+                      <ChocolateBadges
+                        category={item.attributes.ChocolateCategory}
+                      />
+                      {item.attributes.Name && (
+                        <span class="material-icons vegan-icon">compost</span>
+                      )}
+                    </div>
+                    <span class="card_price">£{item.attributes.Price}</span>
+                  </div>
+                ))}
+              </div>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<script is:inline>
+  const category = document.querySelectorAll(".menu-page .category");
+  category[0].setAttribute("open", true);
+</script>

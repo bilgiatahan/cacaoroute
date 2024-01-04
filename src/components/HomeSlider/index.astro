@@ -1,0 +1,39 @@
+---
+import fetchApi from "../../lib/strapi";
+import type Slider from "../../types/home-slider";
+
+const heroSlider = await fetchApi<Slider[]>({
+  endpoint: "main-sliders?populate=*",
+  wrappedByKey: "data",
+});
+---
+
+<div class="swiper home-slider">
+  <div class="swiper-wrapper">
+    {
+      heroSlider.map((slider) => (
+        <div class="swiper-slide">
+          <p class="text">{slider.attributes.text}</p>
+          <img
+            src={
+              import.meta.env.STRAPI_URL +
+              slider.attributes.image.data.attributes.url
+            }
+            alt={slider.attributes.image.data.attributes.name}
+          />
+        </div>
+      ))
+    }
+  </div>
+</div>
+<script
+  src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"
+  is:inline></script>
+<script is:inline>
+  const homeSlider = new Swiper(".home-slider", {
+    loop: true,
+    autoplay: {
+      delay: 5000,
+    },
+  });
+</script>

@@ -1,0 +1,19 @@
+---
+import type { ChocolateCategory } from "../../types/menu";
+interface Props {
+  category: ChocolateCategory[];
+}
+const { category } = Astro.props;
+---
+
+{
+  category.length > 0 && (
+    <div class="chocolate_category_badges">
+      {category.map((item) => (
+        <div class={`badge ${item.ChocolateCategory.toLowerCase()}`}>
+          {item.ChocolateCategory.at(0)}
+        </div>
+      ))}
+    </div>
+  )
+}

@@ -1,0 +1,70 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: $brand-color;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  padding-block: 1rem;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    max-width: 200px;
+
+    img {
+      padding-top: 5px;
+      width: 100%;
+    }
+  }
+
+
+  .navbar {
+    @media (max-width: 768px) {
+      position: absolute;
+      top: 99%;
+      left: 0;
+      right: 0;
+      background: #fff;
+      clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+
+      &.active {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      }
+    }
+
+
+    &-item {
+      margin: 0 1rem;
+      font-size: 1.25rem;
+      text-transform: uppercase;
+      color: #fff;
+
+      @media (max-width: 768px) {
+        color: $brand-color;
+        display: block;
+        font-size: .75rem;
+        margin: 0;
+        padding: 1.5rem 2rem;
+      }
+    }
+  }
+
+
+  &-mobile-button {
+    font-size: 1.75rem;
+    cursor: pointer;
+    display: none;
+    color: $light-grey;
+
+    @media (max-width: 768px) {
+      display: initial;
+      transform: rotate(180deg);
+    }
+  }
+}

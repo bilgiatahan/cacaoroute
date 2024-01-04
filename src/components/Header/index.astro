@@ -1,0 +1,29 @@
+<header class="header">
+  <div class="container">
+    <a href="/" class="logo">
+      <img src="public/images/logo.png" alt="Cacao Route" />
+    </a>
+    <nav class="navbar js-navbar">
+      <a class="navbar-item" href="/">home</a>
+      <a class="navbar-item" href="#about">about</a>
+      <a class="navbar-item" href="/menu">menu</a>
+      <a class="navbar-item" href="#review">review</a>
+    </nav>
+    <span class="material-icons header-mobile-button js-header-mobile-button">
+      menu
+    </span>
+  </div>
+</header>
+
+<script>
+  const menu = document.querySelector(
+    ".js-header-mobile-button"
+  ) as HTMLElement;
+  const navbar = document.querySelector(".js-navbar") as HTMLElement;
+
+  menu.addEventListener("click", (e) => {
+    e.preventDefault();
+    menu.classList.toggle("fa-times");
+    navbar.classList.toggle("active");
+  });
+</script>

@@ -1,0 +1,77 @@
+.footer {
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  border-top: 1px solid $brand-color;
+
+  @include phone-up {
+    padding-top: 2rem;
+  }
+
+  .container {
+    @include phone-up {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .box {
+      h3 {
+        padding: 1rem 0;
+        color: $brand-color;
+        font-weight: 600;
+        font-size: 1rem;
+
+        @include phone-up {
+          font-size: 1.5rem;
+        }
+      }
+
+      a {
+        display: flex;
+        align-items: center;
+        color: $brand-color;
+        font-size: .75rem;
+        padding: .5rem 0;
+
+        @include phone-up {
+          padding: 1rem 0;
+          font-size: 1em;
+        }
+
+        &:hover {
+          .icon {
+            padding-right: 1rem;
+          }
+        }
+
+        .icon {
+          padding-right: 0.5rem;
+        }
+      }
+    }
+
+    .credit {
+      text-align: center;
+      font-size: 2rem;
+      padding: 2rem 1rem;
+      margin-top: 1rem;
+      color: $brand-color;
+
+      span {
+        border-bottom: $brand-color;
+      }
+    }
+
+    .copyright {
+      grid-column: 3 span;
+      text-align: center;
+      font-weight: 300;
+      font-size: .75rem;
+      user-select: none;
+
+      @include phone-down {
+        margin-top: 2rem;
+      }
+    }
+  }
+}
