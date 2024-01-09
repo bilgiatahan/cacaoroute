@@ -11,7 +11,7 @@ const heroSlider = await fetchApi<Slider[]>({
 <div class="swiper home-slider">
   <div class="swiper-wrapper">
     {
-      heroSlider.map((slider) => (
+      heroSlider?.map((slider) => (
         <div class="swiper-slide">
           <p class="text">{slider.attributes.text}</p>
           <img
@@ -19,6 +19,8 @@ const heroSlider = await fetchApi<Slider[]>({
               import.meta.env.STRAPI_URL +
               slider.attributes.image.data.attributes.url
             }
+            loading="lazy"
+            fetchpriority="high"
             alt={slider.attributes.image.data.attributes.name}
           />
         </div>

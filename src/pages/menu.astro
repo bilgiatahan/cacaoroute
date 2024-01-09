@@ -19,19 +19,19 @@ const menus = await useMenuByCategory();
               <div class="card-container">
                 {menus[category].map((item) => (
                   <div class="card">
-                    <h3 class="card_title">{item.attributes.Name}</h3>
+                    <h3 class="card_title">{item.attributes.name}</h3>
                     <p class="card_description">
-                      {item.attributes.Description}
+                      {item.attributes.description}
                     </p>
                     <div class="card_bagdes">
                       <ChocolateBadges
-                        category={item.attributes.ChocolateCategory}
+                        category={item.attributes.chocolate_type}
                       />
-                      {item.attributes.Name && (
+                      {item.attributes.isVegan && (
                         <span class="material-icons vegan-icon">compost</span>
                       )}
                     </div>
-                    <span class="card_price">£{item.attributes.Price}</span>
+                    <span class="card_price">£{item.attributes.price}</span>
                   </div>
                 ))}
               </div>

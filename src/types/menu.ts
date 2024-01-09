@@ -1,23 +1,25 @@
 export default interface Menu {
   id: number;
   attributes: {
-    Name: string;
-    Description: string;
-    Price: number;
+    name: string;
+    description: string;
+    price: number;
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
     Category: Category;
-    ChocolateCategory: ChocolateCategory[];
+    isVegan?: boolean;
+    isGlutenFree?: boolean;
+    chocolate_type: ChocolateType[];
   };
 }
 
 interface Category {
   id: number;
-  Category: string;
+  category: string;
 }
 
-export interface ChocolateCategory {
+export interface ChocolateType {
   id: number;
-  ChocolateCategory: string;
+  type: string;
 }

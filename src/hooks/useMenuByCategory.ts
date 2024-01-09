@@ -13,7 +13,7 @@ export default async function useMenuByCategory() {
 
   const groupedByCategory: GroupedByCategory = menus.reduce(
     (result: GroupedByCategory, item: Menus) => {
-      const category = item.attributes.Category.Category;
+      const category = item.attributes.Category.category;
 
       if (!result[category]) {
         result[category] = [];

@@ -1,7 +1,7 @@
 ---
-import type { ChocolateCategory } from "../../types/menu";
+import type { ChocolateType } from "../../types/menu";
 interface Props {
-  category: ChocolateCategory[];
+  category: ChocolateType[];
 }
 const { category } = Astro.props;
 ---
@@ -10,8 +10,11 @@ const { category } = Astro.props;
   category.length > 0 && (
     <div class="chocolate_category_badges">
       {category.map((item) => (
-        <div class={`badge ${item.ChocolateCategory.toLowerCase()}`}>
-          {item.ChocolateCategory.at(0)}
+        <div
+          class={`badge ${item.type.toLowerCase()}`}
+          data-tooltip={item.type}
+        >
+          {item.type.at(0)}
         </div>
       ))}
     </div>
