@@ -1,4 +1,5 @@
 <header class="header">
+  <div class="overlay d-none js-header-overlay"></div>
   <div class="container">
     <a href="/" class="logo">
       <img src="/images/logo.png" alt="Cacao Route" />
@@ -19,11 +20,18 @@
   const menu = document.querySelector(
     ".js-header-mobile-button"
   ) as HTMLElement;
+  const overlay = document.querySelector(".js-header-overlay") as HTMLElement;
   const navbar = document.querySelector(".js-navbar") as HTMLElement;
 
   menu.addEventListener("click", (e) => {
     e.preventDefault();
     menu.classList.toggle("fa-times");
+    navbar.classList.toggle("active");
+    overlay.classList.remove("d-none");
+  });
+
+  overlay.addEventListener("click", () => {
+    overlay.classList.add("d-none");
     navbar.classList.toggle("active");
   });
 </script>
