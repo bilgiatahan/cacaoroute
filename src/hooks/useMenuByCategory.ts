@@ -1,5 +1,6 @@
 import fetchApi from "../lib/strapi";
 import type Menus from "../types/menu";
+import qs from "qs";
 
 interface GroupedByCategory {
   [key: string]: Menus[];
@@ -8,6 +9,9 @@ interface GroupedByCategory {
 export default async function useMenuByCategory() {
   const menus = await fetchApi<Menus[]>({
     endpoint: "menus?populate=*",
+    query: qs.stringify({
+      populate: ["Category", "chocolate_type"],
+    }),
     wrappedByKey: "data",
   });
 

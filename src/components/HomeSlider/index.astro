@@ -1,10 +1,14 @@
 ---
 import fetchApi from "../../lib/strapi";
 import type Slider from "../../types/home-slider";
+import { Image } from "astro:assets";
 
 const heroSlider = await fetchApi<Slider[]>({
-  endpoint: "main-sliders?populate=*",
+  endpoint: "main-sliders",
   wrappedByKey: "data",
+  query: {
+    populate: "image",
+  },
 });
 ---
 
@@ -14,13 +18,13 @@ const heroSlider = await fetchApi<Slider[]>({
       heroSlider?.map((slider) => (
         <div class="swiper-slide">
           <p class="text">{slider.attributes.text}</p>
-          <img
+          <Image
             src={
               import.meta.env.STRAPI_URL +
               slider.attributes.image.data.attributes.url
             }
-            loading="lazy"
-            fetchpriority="high"
+            width={500}
+            height={858}
             alt={slider.attributes.image.data.attributes.name}
           />
         </div>

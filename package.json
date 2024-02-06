@@ -13,10 +13,12 @@
     "@astrojs/check": "^0.3.4",
     "astro": "^4.0.8",
     "css-tooltip": "^0.3.4",
+    "qs": "^6.11.2",
     "swiper": "^11.0.5",
     "typescript": "^5.3.3"
   },
   "devDependencies": {
+    "@types/qs": "^6.9.11",
     "sass": "^1.69.6"
   }
 }

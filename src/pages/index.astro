@@ -1,6 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import HeroSlider from "../components/HomeSlider/index.astro";
+import { Image } from "astro:assets";
+import giftCard from "../../public/images/gift-card.jpg";
+import makeChocolate from "../../public/images/how_to_make_chocolate.jpg";
+import slider1 from "../../public/images/slider1.jpg";
+import waffle from "../../public/images/waffle.jpg";
+import coffee from "../../public/images/coffee.jpg";
 ---
 
 <Layout title="Cacao Route - Chocolatier">
@@ -230,15 +236,15 @@ import HeroSlider from "../components/HomeSlider/index.astro";
       <div class="container">
         <div class="card">
           <p class="text">Coffee</p>
-          <img src="/images/coffee.jpg" alt="" />
+          <Image src={coffee} alt="Coffee" width={400} height={400} />
         </div>
         <div class="card">
           <p class="text">Sweat</p>
-          <img src="/images/waffle.jpg" alt="" />
+          <Image src={waffle} alt="Belguim Waffle" width={400} height={400} />
         </div>
         <div class="card">
           <p class="text">Hot Chocolate</p>
-          <img src="/images/slider1.jpg" alt="" />
+          <Image src={slider1} alt="Hot Chocolate" width={400} height={400} />
         </div>
         <div class="advertisement-card col-2 how-to-make-chocolate">
           <div class="text">
@@ -246,7 +252,7 @@ import HeroSlider from "../components/HomeSlider/index.astro";
             <p class="description">Craft your own indulgent hot chocolate.</p>
             <a href="" class="button">Get Make a Chocolate</a>
           </div>
-          <img src="/images/how_to_make_chocolate.jpg" alt="" />
+          <Image width={400} src={makeChocolate} alt="how to make chocolate" />
         </div>
         <div class="advertisement-card gift-card">
           <div class="text">
@@ -256,7 +262,7 @@ import HeroSlider from "../components/HomeSlider/index.astro";
             </p>
             <p>You can also request it at the till</p>
           </div>
-          <img src="/images/gift-card.jpg" alt="" />
+          <Image src={giftCard} alt="gift card" width={400} height={400} />
         </div>
       </div>
     </div>

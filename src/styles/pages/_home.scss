@@ -401,8 +401,7 @@
 
       img {
         filter: brightness(.5);
-        aspect-ratio: 16 / 9;
-        object-fit: cover;
+        height: 100%;
       }
     }
 

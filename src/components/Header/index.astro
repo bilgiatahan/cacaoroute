@@ -1,8 +1,12 @@
+---
+import { Image } from "astro:assets";
+---
+
 <header class="header">
   <div class="overlay d-none js-header-overlay"></div>
   <div class="container">
     <a href="/" class="logo">
-      <img src="/images/logo.png" alt="Cacao Route" />
+      <Image src="/images/logo.png" alt="Cacao Route" width={200} height={38} />
     </a>
     <nav class="navbar js-navbar">
       <a class="navbar-item" href="/">home</a>
