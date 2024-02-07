@@ -1,0 +1,53 @@
+---
+import fetchApi from "../../lib/strapi";
+import type PopularMenu from "../../types/popular-menu";
+import { formatPrice } from "../../lib/common";
+import ChocolateBadges from "../ChocolateBadges/index.astro";
+import QueryString from "qs";
+import { Image } from "astro:assets";
+
+const data = await fetchApi<PopularMenu[]>({
+  endpoint: "popular-menu-sections?populate=*",
+  wrappedByKey: "data",
+  query: QueryString.stringify({
+    populate: ["image", "chocolate_type"],
+  }),
+});
+---
+
+<div class="popular-menu">
+  <div class="container">
+    <h3 class="title">
+      our menu <span>popular menu</span>
+    </h3>
+    <div class="card-container">
+      {
+        data.map(({ attributes: item }) => (
+          <div class="card js-card">
+            <div class="card_title-container">
+              <h3 class="card_title">{item.title}</h3>
+              {item.image.data && (
+                <span class="material-icons icon js-open-image">open_in_new</span>
+              )}
+            </div>
+            <ChocolateBadges category={item.chocolate_type} />
+            <p class="card_description">{item.description}</p>
+            <span class="card_price">{formatPrice(item.price)}</span>
+            {item.image.data && (
+              <div class="image-modal-overlay d-none js-image-modal-overlay"></div>
+              <div class="image-modal d-none js-image-modal">
+                <Image
+                  width={500}
+                  height={500}
+                  src={item.image.data?.attributes.url}
+                  alt={item.image.data?.attributes.name}
+                />
+              </div>
+            )}
+          </div>
+        ))
+      }
+    </div>
+    <div class="see-all-menu">See All Menu</div>
+  </div>
+</div>

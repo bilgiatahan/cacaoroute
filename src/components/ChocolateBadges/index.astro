@@ -7,7 +7,7 @@ const { category } = Astro.props;
 ---
 
 {
-  category.length > 0 && (
+  category && category.length > 0 && (
     <div class="chocolate_category_badges">
       {category.map((item) => (
         <div

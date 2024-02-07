@@ -2,6 +2,8 @@
 import Layout from "../layouts/Layout.astro";
 import useMenuByCategory from "../hooks/useMenuByCategory";
 import ChocolateBadges from "../components/ChocolateBadges/index.astro";
+import { formatPrice } from "../lib/common";
+
 const menus = await useMenuByCategory();
 ---
 
@@ -32,10 +34,7 @@ const menus = await useMenuByCategory();
                       )}
                     </div>
                     <span class="card_price">
-                      £
-                      {item.attributes.price
-                        .toFixed(2)
-                        .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
+                      {formatPrice(item.attributes.price)}
                     </span>
                   </div>
                 ))}
