@@ -51,3 +51,25 @@ const data = await fetchApi<PopularMenu[]>({
     <div class="see-all-menu">See All Menu</div>
   </div>
 </div>
+
+<script is:inline>
+  const openbuttons = document.querySelectorAll('.js-open-image');
+  openbuttons.forEach(button => {
+    button.addEventListener('click',(e)=>{
+      e.preventDefault();
+      const element = e.target;
+      const parent = element.closest('.js-card')
+      const imageModal = parent.querySelector('.js-image-modal');
+      const imageModalOverlay = parent.querySelector('.js-image-modal-overlay');
+      handleImageModal(imageModal, imageModalOverlay);
+    })
+  })
+
+  function handleImageModal(imgElement, imageOverlayElement) {
+    imgElement.classList.remove('d-none');
+    imageOverlayElement.classList.remove('d-none');
+    imgElement.addEventListener('click',() => { imgElement.classList.add('d-none'); imageOverlayElement.classList.add('d-none'); });
+    imageOverlayElement.addEventListener('click',() => { imgElement.classList.add('d-none'); imageOverlayElement.classList.add('d-none'); });
+  }
+
+</script>
