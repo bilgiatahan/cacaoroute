@@ -1,0 +1,73 @@
+.how_to_make_chocolate {
+  padding-bottom: 3em;
+
+  .banner {
+    width: 100%;
+    filter: grayscale(.5);
+
+    img {
+      width: 100%;
+      height: auto;
+      max-height: 500px;
+      object-fit: cover;
+      object-position: 70% 0%;
+    }
+  }
+
+  .title {
+    text-align: center;
+    margin: 1em 0;
+    color: $brand-color;
+    text-transform: uppercase;
+    font-size: 42px;
+  }
+
+  .content {
+    font-size: 18px;
+    line-height: 32px;
+    margin-bottom: 3em;
+  }
+
+  .recipes-images {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 1rem;
+    place-items: center;
+
+    @include phone-down {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    @include tablet-up {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    &-item {
+      max-width: 250px;
+      height: auto;
+      object-fit: contain;
+      width: 100%;
+
+      @include desktop-up {
+        max-width: 400px;
+      }
+    }
+
+    .video_content {
+      height: 100%;
+      padding: 0 1.5em;
+
+      @include phone-up {
+        grid-column: 1/span 2;
+      }
+
+      @include tablet-up {
+        grid-column: 2/ span 2;
+      }
+
+      video {
+        object-fit: cover;
+      }
+    }
+  }
+}

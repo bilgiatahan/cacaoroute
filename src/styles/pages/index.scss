@@ -1,2 +1,51 @@
 @import 'home';
 @import 'menu';
+@import 'flatpage';
+
+.chocolate_category_badges {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  @include phone-up {
+    margin-block: .75rem;
+    gap: 1rem;
+  }
+
+  .badge {
+    width: 1.25rem;
+    height: 1.25rem;
+    line-height: 1.25rem;
+    font-size: 12px;
+
+    @include phone-up {
+      width: 1.5rem;
+      height: 1.5rem;
+      line-height: 1.5rem;
+      font-size: 14px;
+    }
+
+    text-align: center;
+    border: 1px solid #212121;
+    border-radius: 50%;
+    font-weight: 550;
+    user-select: none;
+
+    &.dark {
+      background-color: #332421;
+      color: #f6f2f1;
+    }
+
+    &.milk {
+      background-color: #A16B4C;
+      border-color: #A16B4C;
+      color: #f6f2f1;
+    }
+
+    &.white {
+      background-color: #EDE6D6;
+      border-color: #EDE6D6;
+      color: #332421;
+    }
+  }
+}

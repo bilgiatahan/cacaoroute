@@ -2,6 +2,8 @@
 import Layout from "../layouts/Layout.astro";
 import useMenuByCategory from "../hooks/useMenuByCategory";
 import ChocolateBadges from "../components/ChocolateBadges/index.astro";
+import { formatPrice } from "../lib/common";
+
 const menus = await useMenuByCategory();
 ---
 
@@ -31,7 +33,9 @@ const menus = await useMenuByCategory();
                         <span class="material-icons vegan-icon">compost</span>
                       )}
                     </div>
-                    <span class="card_price">£{item.attributes.price}</span>
+                    <span class="card_price">
+                      {formatPrice(item.attributes.price)}
+                    </span>
                   </div>
                 ))}
               </div>

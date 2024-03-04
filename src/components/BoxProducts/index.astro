@@ -1,0 +1,68 @@
+---
+import fetchApi from "../../lib/strapi";
+import type Product from "../../types/box-product";
+import { Image } from "astro:assets";
+
+const productsSlider = await fetchApi<Product[]>({
+  endpoint: "box-products",
+  wrappedByKey: "data",
+  query: {
+    populate: "image",
+  },
+});
+---
+
+<div class="products">
+  <div class="container">
+    <h3 class="title">Our Product</h3>
+    <div class="swiper products-slider products-container">
+      <div class="swiper-wrapper">
+        {
+          productsSlider.map(({ attributes: product }) => (
+            <div class="swiper-slide">
+              <div class="card">
+                {product.image.data.at(0) && (
+                  <Image
+                    src={product.image.data[0].attributes.url}
+                    class="card-image"
+                    width={390}
+                    height={390}
+                    alt={
+                      product.image.data[0]?.attributes.name || "Cacao Route"
+                    }
+                  />
+                )}
+                <h3 class="card_title">{product.title}</h3>
+                <p class="card_description">{product.description}</p>
+                <div class="card_button">Get In the Shop</div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+  </div>
+</div>
+
+<script
+  src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"
+  is:inline></script>
+<script is:inline>
+  const productsSlider = new Swiper(".products-slider", {
+    slidesPerView: 2,
+    spaceBetween: 30,
+    loop: true,
+    breakpoints: {
+      768: {
+        slidesPerView: 3,
+        spaceBetween: 30,
+      },
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+</script>

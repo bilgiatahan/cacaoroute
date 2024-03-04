@@ -1,5 +1,6 @@
 import fetchApi from "../lib/strapi";
 import type Menus from "../types/menu";
+import qs from "qs";
 
 interface GroupedByCategory {
   [key: string]: Menus[];
@@ -13,7 +14,7 @@ export default async function useMenuByCategory() {
 
   const groupedByCategory: GroupedByCategory = menus.reduce(
     (result: GroupedByCategory, item: Menus) => {
-      const category = item.attributes.Category.category;
+      const category = item.attributes.Category?.category;
 
       if (!result[category]) {
         result[category] = [];
