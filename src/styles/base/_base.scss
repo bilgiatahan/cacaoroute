@@ -43,3 +43,22 @@ a {
     color: $text-color;
   }
 }
+
+blockquote {
+  border: 1px solid $brand-color;
+  background-color: rgba($color: $brand-color, $alpha: 1.0);
+  color: #fff;
+  font-weight: 300;
+  margin: 1rem;
+  padding: 1.5em 40px;
+  position: relative;
+
+  &::before {
+    content: '``';
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 2em;
+    margin: .5rem;
+  }
+}

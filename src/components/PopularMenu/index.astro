@@ -3,15 +3,11 @@ import fetchApi from "../../lib/strapi";
 import type PopularMenu from "../../types/popular-menu";
 import { formatPrice } from "../../lib/common";
 import ChocolateBadges from "../ChocolateBadges/index.astro";
-import QueryString from "qs";
 import { Image } from "astro:assets";
 
 const data = await fetchApi<PopularMenu[]>({
   endpoint: "popular-menu-sections?populate=*",
   wrappedByKey: "data",
-  query: QueryString.stringify({
-    populate: ["image", "chocolate_type"],
-  }),
 });
 ---
 

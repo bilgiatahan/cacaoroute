@@ -9,14 +9,16 @@ const { category } = Astro.props;
 {
   category && category.length > 0 && (
     <div class="chocolate_category_badges">
-      {category.map((item) => (
-        <div
-          class={`badge ${item.type.toLowerCase()}`}
-          data-tooltip={item.type}
-        >
-          {item.type.at(0)}
-        </div>
-      ))}
+      {category
+        .filter((item) => item.type)
+        .map((item) => (
+          <div
+            class={`badge ${item.type?.toLowerCase()}`}
+            data-tooltip={item.type}
+          >
+            {item.type?.at(0)}
+          </div>
+        ))}
     </div>
   )
 }

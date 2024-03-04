@@ -9,15 +9,12 @@ interface GroupedByCategory {
 export default async function useMenuByCategory() {
   const menus = await fetchApi<Menus[]>({
     endpoint: "menus?populate=*",
-    query: qs.stringify({
-      populate: ["Category", "chocolate_type"],
-    }),
     wrappedByKey: "data",
   });
 
   const groupedByCategory: GroupedByCategory = menus.reduce(
     (result: GroupedByCategory, item: Menus) => {
-      const category = item.attributes.Category.category;
+      const category = item.attributes.Category?.category;
 
       if (!result[category]) {
         result[category] = [];

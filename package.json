@@ -11,9 +11,15 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.3.4",
+    "@astrojs/react": "^3.0.10",
+    "@strapi/blocks-react-renderer": "^1.0.0",
+    "@types/react": "^18.2.62",
+    "@types/react-dom": "^18.2.19",
     "astro": "^4.0.8",
     "css-tooltip": "^0.3.4",
     "qs": "^6.11.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "swiper": "^11.0.5",
     "typescript": "^5.3.3"
   },
