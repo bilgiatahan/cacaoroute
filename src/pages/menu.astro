@@ -12,7 +12,7 @@ const menus = await useMenuByCategory();
     <div class="popular-menu">
       <div class="container">
         {
-          Object.keys(menus).map((category: string, index: number) => (
+          Object.keys(menus).map((category: string) => (
             <details class="category">
               <summary>
                 {category}

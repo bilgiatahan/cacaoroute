@@ -4,7 +4,7 @@ import Layout from "../layouts/Layout.astro";
 import banner from "../../public/images/how-to-make-chocolate-section.jpg";
 import type Homemade_section from "../types/homemade-section";
 import type { ImageItem } from "../types/homemade-section";
-import Image from "astro/components/Image.astro";
+import { Image } from "astro:assets";
 import fetchApi from "../lib/strapi";
 
 const data = await fetchApi<Homemade_section>({
